@@ -34,6 +34,17 @@ public class AppTest
     @Before
     public void setUp(){
         System.out.println("Iniciando configuración...");
+
+        String OS = System.getProperty("os.name").toLowerCase();
+        System.out.println("OS: " + OS);
+        if(OS.contains("win")){
+          System.out.println("Es Windows");
+          System.setProperty("webdriver.chrome.driver","src/drivers/win/chromedriver.exe"); // Windows
+        }else{
+          System.out.println("No es Windows");
+          System.setProperty("webdriver.chrome.driver","src/drivers/mac/chromedriver"); // Linux
+        }
+
         System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
