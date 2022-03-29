@@ -27,7 +27,7 @@ public class AppTest
 {
 
     private WebDriver driver;
-    private Map<String, String> vars;
+    public static Map<String, String> vars = new HashMap<String, String>();
     JavascriptExecutor js;
 
     @Before
@@ -41,29 +41,19 @@ public class AppTest
           System.setProperty("webdriver.chrome.driver","./drivers/win/chromedriver"); // Windows
         }else{
           System.out.println("No es Windows");
-          System.setProperty("webdriver.chrome.driver","./drivers/mac/chromedriver"); // Linux
+          System.setProperty("webdriver.chrome.driver","./drivers/mac/chromedriver"); // MAC
         }
 
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
         js = (JavascriptExecutor) driver;
-        vars = new HashMap<String, String>();
-        //vars.put("correo", (Math.random()*50)+"-test@test.cl");
         if(vars.get("correo") == null){
-          vars.put("correo", (Math.random()*50)+"-test@test.cl");
+          vars.put("correo", "test-"+(Math.random()*50)+"-test@test.cl");
         }
         vars.put("clave", "123456789");
     }
 
-    // @Test
-    // public void shouldAnswerWithTrue() {
-    //   System.out.println("Iniciando Pruebas...");
-    //   WebElement searchbox = driver.findElement(By.name("q"));
-    //   searchbox.sendKeys("HandBook Devops");
-    //   searchbox.submit();
-    //   assertEquals("HandBook Devops - Buscar con Google", driver.getTitle());
-    // }
 
     @Test
     public void loginCreateUser() {
@@ -105,17 +95,15 @@ public class AppTest
     driver.findElement(By.id("phone_mobile")).click();
     driver.findElement(By.id("phone_mobile")).sendKeys("99999999");
     driver.findElement(By.cssSelector("#submitAccount .icon-chevron-right")).click();
-
     {
       WebDriverWait wait = new WebDriverWait(driver, 10);
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".logo.img-responsive")));
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("my-account")));
     }
     driver.findElement(By.cssSelector(".sf-with-ul")).click();
     driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .button:nth-child(1) > span")).click();
     driver.findElement(By.cssSelector(".continue > span")).click();
     driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .button:nth-child(1) > span")).click();
     driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
-
     driver.findElement(By.cssSelector(".standard-checkout > span")).click();
     driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
     driver.findElement(By.id("cgv")).click();
@@ -124,7 +112,6 @@ public class AppTest
     driver.findElement(By.cssSelector("#cart_navigation span")).click();
     driver.findElement(By.linkText("Back to orders")).click();
     driver.findElement(By.linkText("Sign out")).click();
-
     driver.quit();
   }
   @Test
@@ -136,18 +123,16 @@ public class AppTest
     driver.findElement(By.id("email")).sendKeys(vars.get("correo"));
     driver.findElement(By.id("passwd")).click();
     driver.findElement(By.id("passwd")).sendKeys(vars.get("clave"));
-    driver.findElement(By.cssSelector("#SubmitLogin > span")).click();
+    driver.findElement(By.id("SubmitLogin")).click();
     {
       WebDriverWait wait = new WebDriverWait(driver, 10);
-      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".logo.img-responsive")));
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("my-account")));
     }
     driver.findElement(By.cssSelector(".sf-with-ul")).click();
     driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .button:nth-child(1) > span")).click();
     driver.findElement(By.cssSelector(".continue > span")).click();
     driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .button:nth-child(1) > span")).click();
     driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
-    //driver.findElement(By.cssSelector("#cart_quantity_up_1_1_0_664254 > span")).click();
-    //driver.findElement(By.cssSelector("#\\32_7_0_664254 > .icon-trash")).click();
     driver.findElement(By.cssSelector(".standard-checkout > span")).click();
     driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
     driver.findElement(By.id("cgv")).click();
@@ -156,7 +141,8 @@ public class AppTest
     driver.findElement(By.cssSelector("#cart_navigation span")).click();
     driver.findElement(By.linkText("Back to orders")).click();
     driver.findElement(By.linkText("Sign out")).click();
-
     driver.quit();
   }
+
+
 }

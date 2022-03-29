@@ -1,4 +1,32 @@
 -------------------------------------------------------------------------------
 Test set: selenium.AppTest
 -------------------------------------------------------------------------------
-Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 53.827 s - in selenium.AppTest
+Tests run: 2, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 52.223 s <<< FAILURE! - in selenium.AppTest
+loginCreateUser(selenium.AppTest)  Time elapsed: 20.848 s  <<< ERROR!
+org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":".sf-with-ul"}
+  (Session info: chrome=99.0.4844.84)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'FECONTRERAS-NT2', ip: '172.28.128.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.84, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\FECONT~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:60503}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: 819b8183d64abd34cd27501780d7981d
+*** Element info: {Using=css selector, value=.sf-with-ul}
+	at selenium.AppTest.loginCreateUser(AppTest.java:112)
+
+loginCompra(selenium.AppTest)  Time elapsed: 31.279 s  <<< ERROR!
+org.openqa.selenium.TimeoutException: Expected condition failed: waiting for visibility of element located by By.cssSelector: .sf-with-ul (tried for 10 second(s) with 500 milliseconds interval)
+	at selenium.AppTest.loginCompra(AppTest.java:145)
+Caused by: org.openqa.selenium.NoSuchElementException: 
+no such element: Unable to locate element: {"method":"css selector","selector":".sf-with-ul"}
+  (Session info: chrome=99.0.4844.84)
+For documentation on this error, please visit: https://www.seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
+System info: host: 'FECONTRERAS-NT2', ip: '172.28.128.1', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '11.0.12'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities {acceptInsecureCerts: false, browserName: chrome, browserVersion: 99.0.4844.84, chrome: {chromedriverVersion: 99.0.4844.51 (d537ec02474b5..., userDataDir: C:\Users\FECONT~1\AppData\L...}, goog:chromeOptions: {debuggerAddress: localhost:60540}, javascriptEnabled: true, networkConnectionEnabled: false, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, proxy: Proxy(), setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:virtualAuthenticators: true}
+Session ID: cc00c1bbc35975b5bee3d3e913ec92fd
+*** Element info: {Using=css selector, value=.sf-with-ul}
+	at selenium.AppTest.loginCompra(AppTest.java:145)
+
