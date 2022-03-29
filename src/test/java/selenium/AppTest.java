@@ -58,7 +58,7 @@ public class AppTest
     @Test
     public void loginCreateUser() {
     driver.get("http://automationpractice.com/index.php");
-    driver.manage().window().setSize(new Dimension(800, 800));
+    driver.manage().window().setSize(new Dimension(820, 800));
     driver.findElement(By.linkText("Sign in")).click();
     driver.findElement(By.id("email_create")).click();
     driver.findElement(By.id("email_create")).sendKeys(vars.get("correo"));
@@ -114,10 +114,11 @@ public class AppTest
     driver.findElement(By.linkText("Sign out")).click();
     driver.quit();
   }
+
   @Test
   public void loginCompra() {
     driver.get("http://automationpractice.com/index.php");
-    driver.manage().window().setSize(new Dimension(800, 800));
+    driver.manage().window().setSize(new Dimension(820, 800));
     driver.findElement(By.linkText("Sign in")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).sendKeys(vars.get("correo"));
