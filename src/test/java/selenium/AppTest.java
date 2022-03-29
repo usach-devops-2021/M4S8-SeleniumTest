@@ -18,15 +18,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.junit.Test;
 import org.junit.Before;
 
-
 import static org.junit.Assert.*;
 import static org.hamcrest.CoreMatchers.is;
 /**
  * Unit test for simple App.
  */
-public class AppTest 
+public class AppTest
 {
-    
+
     private WebDriver driver;
     private Map<String, String> vars;
     JavascriptExecutor js;
@@ -39,10 +38,10 @@ public class AppTest
         System.out.println("OS: " + OS);
         if(OS.contains("win")){
           System.out.println("Es Windows");
-          System.setProperty("webdriver.chrome.driver","drivers/win/chromedriver"); // Windows
+          System.setProperty("webdriver.chrome.driver","./drivers/win/chromedriver"); // Windows
         }else{
           System.out.println("No es Windows");
-          System.setProperty("webdriver.chrome.driver","drivers/mac/chromedriver"); // Linux
+          System.setProperty("webdriver.chrome.driver","./drivers/mac/chromedriver"); // Linux
         }
 
         driver = new ChromeDriver();
@@ -69,6 +68,7 @@ public class AppTest
     @Test
     public void loginCreateUser() {
     driver.get("http://automationpractice.com/index.php");
+    driver.manage().window().setSize(new Dimension(800, 800));
     driver.findElement(By.linkText("Sign in")).click();
     driver.findElement(By.id("email_create")).click();
     driver.findElement(By.id("email_create")).sendKeys(vars.get("correo"));
@@ -105,6 +105,24 @@ public class AppTest
     driver.findElement(By.id("phone_mobile")).click();
     driver.findElement(By.id("phone_mobile")).sendKeys("99999999");
     driver.findElement(By.cssSelector("#submitAccount .icon-chevron-right")).click();
+
+    {
+      WebDriverWait wait = new WebDriverWait(driver, 10);
+      wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".logo.img-responsive")));
+    }
+    driver.findElement(By.cssSelector(".sf-with-ul")).click();
+    driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .button:nth-child(1) > span")).click();
+    driver.findElement(By.cssSelector(".continue > span")).click();
+    driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .button:nth-child(1) > span")).click();
+    driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
+
+    driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+    driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
+    driver.findElement(By.id("cgv")).click();
+    driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+    driver.findElement(By.linkText("Pay by bank wire (order processing will be longer)")).click();
+    driver.findElement(By.cssSelector("#cart_navigation span")).click();
+    driver.findElement(By.linkText("Back to orders")).click();
     driver.findElement(By.linkText("Sign out")).click();
 
     driver.quit();
@@ -112,7 +130,7 @@ public class AppTest
   @Test
   public void loginCompra() {
     driver.get("http://automationpractice.com/index.php");
-    driver.manage().window().setSize(new Dimension(1276, 697));
+    driver.manage().window().setSize(new Dimension(800, 800));
     driver.findElement(By.linkText("Sign in")).click();
     driver.findElement(By.id("email")).click();
     driver.findElement(By.id("email")).sendKeys(vars.get("correo"));
@@ -123,21 +141,21 @@ public class AppTest
       WebDriverWait wait = new WebDriverWait(driver, 10);
       wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".logo.img-responsive")));
     }
-    // driver.findElement(By.cssSelector(".sfHover > .sf-with-ul")).click();
-    // driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .button:nth-child(1) > span")).click();
-    // driver.findElement(By.cssSelector(".continue > span")).click();
-    // driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .button:nth-child(1) > span")).click();
-    // driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
-    // driver.findElement(By.cssSelector("#cart_quantity_up_1_1_0_664254 > span")).click();
-    // driver.findElement(By.cssSelector("#\\32_7_0_664254 > .icon-trash")).click();
-    // driver.findElement(By.cssSelector(".standard-checkout > span")).click();
-    // driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
-    // driver.findElement(By.id("cgv")).click();
-    // driver.findElement(By.cssSelector(".standard-checkout > span")).click();
-    // driver.findElement(By.linkText("Pay by bank wire (order processing will be longer)")).click();
-    // driver.findElement(By.cssSelector("#cart_navigation span")).click();
-    // driver.findElement(By.linkText("Back to orders")).click();
-    // driver.findElement(By.linkText("Sign out")).click();
+    driver.findElement(By.cssSelector(".sf-with-ul")).click();
+    driver.findElement(By.cssSelector(".ajax_block_product:nth-child(1) .button:nth-child(1) > span")).click();
+    driver.findElement(By.cssSelector(".continue > span")).click();
+    driver.findElement(By.cssSelector(".ajax_block_product:nth-child(2) .button:nth-child(1) > span")).click();
+    driver.findElement(By.cssSelector(".button-medium:nth-child(2) > span")).click();
+    //driver.findElement(By.cssSelector("#cart_quantity_up_1_1_0_664254 > span")).click();
+    //driver.findElement(By.cssSelector("#\\32_7_0_664254 > .icon-trash")).click();
+    driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+    driver.findElement(By.cssSelector(".button:nth-child(4) > span")).click();
+    driver.findElement(By.id("cgv")).click();
+    driver.findElement(By.cssSelector(".standard-checkout > span")).click();
+    driver.findElement(By.linkText("Pay by bank wire (order processing will be longer)")).click();
+    driver.findElement(By.cssSelector("#cart_navigation span")).click();
+    driver.findElement(By.linkText("Back to orders")).click();
+    driver.findElement(By.linkText("Sign out")).click();
 
     driver.quit();
   }
