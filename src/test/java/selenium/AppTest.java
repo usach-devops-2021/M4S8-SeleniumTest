@@ -39,13 +39,12 @@ public class AppTest
         System.out.println("OS: " + OS);
         if(OS.contains("win")){
           System.out.println("Es Windows");
-          System.setProperty("webdriver.chrome.driver","src/drivers/win/chromedriver.exe"); // Windows
+          System.setProperty("webdriver.chrome.driver","drivers/win/chromedriver"); // Windows
         }else{
           System.out.println("No es Windows");
-          System.setProperty("webdriver.chrome.driver","src/drivers/mac/chromedriver"); // Linux
+          System.setProperty("webdriver.chrome.driver","drivers/mac/chromedriver"); // Linux
         }
 
-        System.setProperty("webdriver.chrome.driver","drivers/chromedriver");
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 
@@ -68,7 +67,7 @@ public class AppTest
     // }
 
     @Test
-    public void createUser() {
+    public void loginCreateUser() {
     driver.get("http://automationpractice.com/index.php");
     driver.findElement(By.linkText("Sign in")).click();
     driver.findElement(By.id("email_create")).click();
@@ -111,7 +110,7 @@ public class AppTest
     driver.quit();
   }
   @Test
-  public void login() {
+  public void loginCompra() {
     driver.get("http://automationpractice.com/index.php");
     driver.manage().window().setSize(new Dimension(1276, 697));
     driver.findElement(By.linkText("Sign in")).click();
